@@ -105,7 +105,7 @@ const Navbarr: React.FC = () => {
               ""
             )}
           </div>
-          <div className="flex justify-end lg:hidden basis-1/7">
+          <div className="flex justify-end mr-5 lg:hidden basis-1/7">
             <button onClick={handleMenuToggle}>
               <i className="text-white fa-solid fa-bars"></i>
             </button>

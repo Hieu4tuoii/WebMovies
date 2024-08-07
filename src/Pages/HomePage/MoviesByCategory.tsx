@@ -56,7 +56,7 @@ const MoviesByCategory: React.FC<MoviesByCategoryProps> = (props) => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="mb-5 sm:mb-10">
+    <div className="mb-8 sm:mb-10">
       <Link to={`${props.endpoint}`}>
         <h2 className="ml-4 text-xl font-semibold sm:text-2xl ">
           {props.CategoryName}

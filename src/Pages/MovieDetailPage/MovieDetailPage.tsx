@@ -94,12 +94,12 @@ const MovieDetailPage: React.FC = () => {
       <div className="w-full">
         <div className="flex flex-col-reverse sm:items-center sm:flex-row">
           <div className="relative z-10 px-5 space-y-2 sm:px-10 md:px-0 md:ml-16 md:-mr-16 md:text-left basis-2/5 xl:basis-1/3">
-            <Skeleton className="h-8 sm:h-10 w-80" />
-            <Skeleton className="h-5 w-60" />
-            <Skeleton className="w-32 h-5" />
-            <Skeleton className="h-5 w-60" />
-            <Skeleton className="h-16 w-96" />
-            <Skeleton className="w-24 h-10 rounded-3xl" />
+            <Skeleton className="w-full h-8 sm:h-10 max-w-80" />
+            <Skeleton className="w-full h-5 max-w-60" />
+            <Skeleton className="w-full h-5 max-w-32" />
+            <Skeleton className="w-full h-5 max-w-60" />
+            <Skeleton className="w-full h-16 max-w-96" />
+            <Skeleton className="w-full h-10 max-w-24 rounded-3xl" />
           </div>
           <div className="relative basis-2/3 ">
             <div className="w-full bg-black-50 h-[37vw]"></div>
@@ -189,7 +189,10 @@ const MovieDetailPage: React.FC = () => {
                 </p>
               </div>
             </div>
-            <button onClick={scrollToEpisodeList} className="px-6 py-2 mt-3 font-medium text-white transition duration-300 ease-out delay-75 rounded-full bg-color-main hover:scale-95 hover:bg-color-main-hover">
+            <button
+              onClick={scrollToEpisodeList}
+              className="px-6 py-2 mt-3 font-medium text-white transition duration-300 ease-out delay-75 rounded-full bg-color-main hover:scale-95 hover:bg-color-main-hover"
+            >
               Xem ngay
             </button>
           </div>
@@ -206,7 +209,7 @@ const MovieDetailPage: React.FC = () => {
       )}
 
       <div
-      // danh dau vi tri danh sach tap
+        // danh dau vi tri danh sach tap
         ref={episodeListRef}
         className="px-3 pt-10 pb-1 mx-auto mt-10 sm:px-12 sm:pt-14 sm:pb-2 bg-bg-section2"
       >

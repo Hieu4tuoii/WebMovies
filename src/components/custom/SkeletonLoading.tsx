@@ -15,7 +15,7 @@ export const SkeletonMovieCard = () => {
 
 export const SKeletonMoviesCarousel = () => {
   return(
-  <div className="mb-5 sm:mb-10">
+  <div className="mb-8 sm:mb-10">
     <Skeleton className="h-8 w-72" />
     <div className="flex flex-row gap-3">
       <div className="mt-4 basis-1/3 sm:basis-1/4 lg:basis-1/5 xl:basis-1/6">

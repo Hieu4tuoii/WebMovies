@@ -24,9 +24,7 @@ const Question: React.FC = () => {
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2 " className="border-b-[#212121]  border-b-2" >
-        <AccordionTrigger>
-          Làm thế nào để xem phim trên Phim Hỏa Tốc?
-        </AccordionTrigger>
+        <AccordionTrigger className="text-left">Làm thế nào để xem phim trên Phim Hỏa Tốc?</AccordionTrigger>
         <AccordionContent>
           Để xem phim, bạn chỉ cần vào trang web, sử dụng thanh tìm kiếm hoặc
           duyệt qua các danh mục phim. Khi tìm thấy bộ phim muốn xem, chỉ cần
