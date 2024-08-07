@@ -107,7 +107,7 @@ const MovieDetailPage: React.FC = () => {
         </div>
         {/* section2 */}
         <div className="px-3 pt-10 pb-1 mx-auto mt-10 sm:px-12 sm:pt-14 sm:pb-2 bg-bg-section2">
-          <h2 className="ml-4 font-semibold sm:text-2xl">Danh sách tập</h2>
+          <h2 className="ml-4 text-xl font-semibold sm:text-2xl">Danh sách tập</h2>
           <Skeleton className="w-full h-10 px-12 mt-4 rounded-md mb-7 sm:mb-12 sm:w-full" />
           <SKeletonMoviesCarousel />
         </div>
@@ -125,13 +125,13 @@ const MovieDetailPage: React.FC = () => {
         <div>
           <div>
             <iframe
-              className="mx-auto sm:w-[95vw] sm:h-[40vw]"
+              className="mx-auto w-[95vw] h-[40vw]"
               src={movieUrl}
               allowFullScreen
             ></iframe>
           </div>
           <div>
-            <h1 className="inline-block ml-16 -mb-6 text-xl md:text-2xl">{`${movieDetail?.movie.name} - ${selectedEpisode}`}</h1>
+            <h1 className="inline-block ml-10 -mb-10 text-xl sm:ml-16 md:text-2xl">{`${movieDetail?.movie.name} - ${selectedEpisode}`}</h1>
           </div>
         </div>
       ) : (

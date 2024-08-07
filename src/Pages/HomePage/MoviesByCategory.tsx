@@ -64,8 +64,8 @@ const MoviesByCategory: React.FC<MoviesByCategoryProps> = (props) => {
         </h2>
       </Link>
       <ul
-        className="mt-4 relative after:-left-2 after:top-0 after:absolute after:z-10 after:h-full after:w-20 after:content-[''] after:bg-gradient-to-l after:from-[#1f1f1f00] after:to-[#1F1F1F] 
-                      before:-right-2 before:top-0 before:absolute before:z-10 before:h-full before:w-20 before:content-[''] before:bg-gradient-to-r before:from-[#1f1f1f00] before:to-[#1F1F1F]"
+        className="mt-4 relative sm:after:-left-2 after:-left-8 after:top-0 after:absolute after:z-10 after:h-full after:w-20 after:content-[''] after:bg-gradient-to-l after:from-[#1f1f1f00] after:to-[#1F1F1F] 
+                       sm:before:-right-2 before:-right-8 before:top-0 before:absolute before:z-10 before:h-full before:w-20 before:content-[''] before:bg-gradient-to-r before:from-[#1f1f1f00] before:to-[#1F1F1F]"
       >
         <Carousel className="">
           <CarouselContent className="">
