@@ -1,5 +1,11 @@
 import MovieCard from "src/components/custom/MovieCard";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "src/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "src/components/ui/carousel";
 import { getMoviesByCategory } from "src/Services/movieServices";
 import { Movie } from "src/Types/Movie";
 import React, { useEffect, useState } from "react";
@@ -34,27 +40,25 @@ const SameMovieList: React.FC<SameMovieListProps> = (props) => {
     fetchMovies();
   }, []);
 
-  if (loading) return(
-    <SKeletonMoviesCarousel/>
-  );
+  if (loading) return <SKeletonMoviesCarousel />;
   if (error) return <p>{error}</p>;
 
   return (
     <div className="mb-5 sm:mb-10">
       <Link to={`danh-sach${props.endpoint}`}>
         <h2 className="ml-4 text-xl font-semibold sm:text-2xl ">
-            Phim cùng thể loại
+          Phim cùng thể loại
           <i className="ml-2 text-xl fa-solid fa-chevron-right"></i>
         </h2>
       </Link>
       <ul
-        className="mt-4 relative after:-left-2 after:top-0 after:absolute after:z-10 after:h-full after:w-20 after:content-[''] after:bg-gradient-to-l after:from-[#1f1f1f00] after:to-[#1F1F1F] 
-                        before:-right-2 before:top-0 before:absolute before:z-10 before:h-full before:w-20 before:content-[''] before:bg-gradient-to-r before:from-[#1f1f1f00] before:to-[#1F1F1F]"
+        className="overflow-hidden mt-4 relative sm:after:-left-2 after:-left-8 after:top-0 after:absolute after:z-10 after:h-full after:w-20 after:content-[''] after:bg-gradient-to-l after:from-[#1f1f1f00] after:to-[#1F1F1F] 
+                       sm:before:-right-2 before:-right-8 before:top-0 before:absolute before:z-10 before:h-full before:w-20 before:content-[''] before:bg-gradient-to-r before:from-[#1f1f1f00] before:to-[#1F1F1F]"
       >
         <Carousel className="">
           <CarouselContent className="">
             {movies.map((movie) => (
-              <CarouselItem  className=" basis-1/3 sm:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+              <CarouselItem className=" basis-1/3 sm:basis-1/4 lg:basis-1/5 xl:basis-1/6">
                 <li key={movie._id} className="block h-full">
                   <MovieCard
                     imgSrc={movie.poster_url}

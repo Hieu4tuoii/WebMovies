@@ -24,7 +24,7 @@ const MovieCard: React.FC<MovieCardProps> = (props) => {
         <h3 className="overflow-hidden text-lg font-normal whitespace-nowrap text-ellipsis">
           {props.movieName}
         </h3>
-        <span className="text-color-three space-nowrap text-ellipsis">{props.origin_name}</span>
+        <span className="text-color-three whitespace-nowrap text-ellipsis">{props.origin_name}</span>
       </div>
     </Link>
     </div>

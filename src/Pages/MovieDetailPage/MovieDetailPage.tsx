@@ -193,7 +193,7 @@ const MovieDetailPage: React.FC = () => {
               onClick={scrollToEpisodeList}
               className="px-6 py-2 mt-3 font-medium text-white transition duration-300 ease-out delay-75 rounded-full bg-color-main hover:scale-95 hover:bg-color-main-hover"
             >
-              Xem ngay
+              Chọn tập
             </button>
           </div>
           <div className="relative basis-2/3 ">
