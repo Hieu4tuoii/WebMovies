@@ -7,6 +7,7 @@ import HomePage from "./Pages/HomePage/HomePage";
 import MovieGenrePage from "./Pages/MovieCategoryPage/MovieCategoryPage";
 import MovieDetailPage from "./Pages/MovieDetailPage/MovieDetailPage";
 import ScrollToTop from "./components/custom/ScrollToTop";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Navbarr />
         {/* tu dong cuon len dau trang moi khi chuyen trang */}
         <ScrollToTop/>
+        <SpeedInsights/>
         <Routes>
           <Route
             path="/"
