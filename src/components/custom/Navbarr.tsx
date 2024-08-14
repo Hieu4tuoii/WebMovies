@@ -73,7 +73,7 @@ const Navbarr: React.FC = () => {
   return (
     <header className="sticky top-0 z-50 w-full bg-black">
       <div className="">
-        <div className="flex flex-row items-center justify-between py-5 ml-5 lg:ml-16 sm:mx-8">
+        <div className="flex flex-row items-center justify-between py-4 ml-5 lg:ml-16 sm:mx-8">
           <div className="sm:basis-1/5 basis-2/7">
             <Link to="">
               <strong className="text-sm text-red-600 transition md:text-xl lg:text-2xl hover:text-color-main-hover">

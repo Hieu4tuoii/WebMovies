@@ -32,7 +32,7 @@ function App() {
             }
           />
 
-          {/* ds phim theo laoi phim(phim moi, hoat hinh ...) */}
+          {/* ds phim theo the loai, theo loai phim hoac theo quoc gia */}
           <Route
             path="/:categoryOrCountry/:slug"
             element={
