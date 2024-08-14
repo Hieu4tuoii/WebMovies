@@ -7,35 +7,32 @@ import MovieCard from "src/components/custom/MovieCard";
 import { Movie } from "@/src/Types/Movie";
 import { Divide } from "lucide-react";
 import { SkeletonMovieLisByCategory } from "src/components/custom/SkeletonLoading";
+import { useParams } from "react-router-dom";
 
-interface MovieGenrePageProps {
-  movieGenreName: string;
-  endpoint: string;
-}
 
-const MovieGenrePage: React.FC<MovieGenrePageProps> = (props) => {
+
+const MovieGenrePage: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const { slug } = useParams();
+  const {categoryOrCountry} = useParams();
+
   //ham lay ds movie tu MovieServices
   const fetchMovies = async () => {
     let moviesData: Movie[] = [];
+    setLoading(true);
     try {
-      if (props.endpoint == "/phim-moi-cap-nhat") {
-        moviesData = await getNewMovies(`/danh-sach${props.endpoint}`);
+      if (slug == "phim-moi-cap-nhat") {
+        moviesData = await getNewMovies(`/${categoryOrCountry}/${slug}`);
       } else {
-        moviesData = await getMoviesByCategory(`/danh-sach${props.endpoint}`);
+        moviesData = await getMoviesByCategory(`/${categoryOrCountry}/${slug}?limit=20`);
       }
-      if (moviesData && moviesData.length != 0 && movies.length == 0) {
         //neeus ko xay ra loi thi moi set ds phim
         setMovies(moviesData); 
         setLoading(false);
-      } else if (moviesData && moviesData.length != 0 && movies.length > 0) {
-        //nếu đã có phần tử trong mảng movies mà lại goiji tiếp get phim từ api từ thực hiện thêm vào mảng movies các data mới
-        setMovies((prevMovies) => [...prevMovies, ...moviesData]); //premovies chứa giá trị callback từ movie, sau đó tạo bản sao từ promovies, tiếp theo add dữ liệu moviesData vừa get đc
-        setLoading(false);
-      }
+       
     } catch (error) {
       setError("Failed to fetch movies");
       setLoading(false);
@@ -44,7 +41,7 @@ const MovieGenrePage: React.FC<MovieGenrePageProps> = (props) => {
 
   useEffect(() => {
     fetchMovies();
-  }, []);
+  }, [categoryOrCountry, slug]);
 
   if (loading) return (
     <div>
@@ -55,7 +52,7 @@ const MovieGenrePage: React.FC<MovieGenrePageProps> = (props) => {
 
   return (
     <div className="w-3/4 mx-auto">
-      <h2 className="mt-10 mb-6 text-2xl font-semibold text-center sm:text-3xl">{props.movieGenreName}</h2>
+      <h2 className="mt-10 mb-6 text-2xl font-semibold text-center sm:text-3xl">Danh sách phim</h2>
       <ul className="">
         <div className="grid grid-cols-2 gap-3 sm:gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {movies.map((movie) => (

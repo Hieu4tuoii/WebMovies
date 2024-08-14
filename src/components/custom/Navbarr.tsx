@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MovieSearchList from "./MovieSearchList";
+import { Category } from "src/Services/MovieDetailServices";
+import { getCategoryList } from "src/Services/CategoryService";
 
 const Navbarr: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,17 +13,32 @@ const Navbarr: React.FC = () => {
 
   const [isFocused, setIsFocused] = useState(false);
 
-  //su dung bien debouncedkeyword de luu gia tri cua keyword khi nguoi dung ngung nhap trong 0,2s tranh viec lien tuc goi ham tim kiem
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedKeyword(keyword);
-    }, 300); // 0.5 giây
+  const [country, setCountry] = useState<Category[]>([]);
+  const [category, setCategory] = useState<Category[]>([]);
+  //get country list from endpoint quoc-gia
 
-    // Cleanup timeout nếu keyword thay đổi trước khi hết thời gian chờ
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [keyword]);
+  // Fetch country list from endpoint quoc-gia
+  useEffect(() => {
+    const fetchCountryList = async () => {
+      try {
+        const countryList = await getCategoryList("/quoc-gia");
+        setCountry(countryList);
+      } catch (error) {
+        console.error("Failed to fetch country list:", error);
+      }
+    }; 
+
+    const fetchCategiryList = async () => {
+      try {
+        const categoryList = await getCategoryList("/the-loai");
+        setCategory(categoryList);
+      } catch (error) {
+        console.error("Failed to fetch category list:", error);
+      }
+    }
+    fetchCountryList();
+    fetchCategiryList();
+  }, []);
 
   const handleSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
@@ -69,11 +86,45 @@ const Navbarr: React.FC = () => {
               <li className="transition-all hover:text-red-600 ">
                 <a href="">Trang chủ</a>
               </li>
-              <li className="transition-all hover:text-red-600">
-                <a href="">Thể loại</a>
+              <li className="relative transition-all hover:text-red-600 group">
+                <a href="#">
+                 Thể loại <i className="fa-solid fa-chevron-down"></i>{" "}
+                </a>
+                <ul className="-right-[200%] w-[500%] text-white absolute hidden pt-1  group-hover:grid  grid-cols-4">
+                  {category.map((item, index) => (
+                    <li
+                      className={index < 16 ? "block" : "hidden"}
+                      key={item.id}
+                    >
+                      <Link
+                        to={`/the-loai/${item.slug}`}
+                        
+                      >
+                        <span className="block w-40 px-2 py-6  bg-[#141111]  hover:text-color-main-hover transition-all text-nowrap">{item.name}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </li>
-              <li className="transition-all hover:text-red-600">
-                <a href="">Liên hệ</a>
+              <li className="relative transition-all hover:text-red-600 group">
+                <a href="#">
+                  Quốc gia <i className="fa-solid fa-chevron-down"></i>{" "}
+                </a>
+                <ul className="-right-[200%] w-[500%] text-white absolute hidden pt-1  group-hover:grid  grid-cols-4">
+                  {country.map((item, index) => (
+                    <li
+                      className={index < 16 ? "block" : "hidden"}
+                      key={item.id}
+                    >
+                      <Link
+                        to={`/quoc-gia/${item.slug}`}
+                        
+                      >
+                        <span className="block w-40 px-2 py-6  bg-[#141111]  hover:text-color-main-hover transition-all text-nowrap">{item.name}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </li>
             </ul>
           </nav>

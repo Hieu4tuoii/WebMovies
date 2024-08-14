@@ -24,43 +24,22 @@ function App() {
               <HomePage/>
             }
           />
-          {/*láy ds all phim theo thể loại*/}
-          <Route
-            path="/danh-sach/phim-moi-cap-nhat"
-            element={
-             <MovieGenrePage movieGenreName="Danh sach phim mới" endpoint="/phim-moi-cap-nhat" />
-            }
-          />
-          <Route
-            path="/danh-sach/phim-le"
-            element={
-             <MovieGenrePage movieGenreName="Danh sach phim lẻ" endpoint="/phim-le?limit=20" />
-            }
-          />
-          <Route
-            path="/danh-sach/phim-bo"
-            element={
-             <MovieGenrePage movieGenreName="Danh sach phim bộ" endpoint="/phim-bo?limit=20" />
-            }
-          />
-          <Route
-            path="/danh-sach/hoat-hinh"
-            element={
-             <MovieGenrePage movieGenreName="Danh sach phim hoạt hình" endpoint="/hoat-hinh?limit=20" />
-            }
-          />
-          <Route
-            path="/danh-sach/tv-shows"
-            element={
-             <MovieGenrePage movieGenreName="Danh sach TV Shows" endpoint="/tv-shows?limit=20" />
-            }
-          />
+          {/* chi tiet phim va ds tap phim */}
            <Route
             path=":slug"
             element={
               <MovieDetailPage/>
             }
           />
+
+          {/* ds phim theo laoi phim(phim moi, hoat hinh ...) */}
+          <Route
+            path="/:categoryOrCountry/:slug"
+            element={
+             <MovieGenrePage />
+            }
+          />
+          
         </Routes>
         <Footer />
       </BrowserRouter>

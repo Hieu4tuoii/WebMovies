@@ -29,6 +29,7 @@ const MovieCard: React.FC<MovieCardProps> = (props) => {
     </Link>
     </div>
   );
+  
 };
 
 export default MovieCard;

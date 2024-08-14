@@ -21,7 +21,9 @@ const MovieSearchList: React.FC<MovieSearchListProps> = (props) => {
       let moviesData;
       moviesData = await getMoviesByCategory(
         //đổi kí tự khoảng trắng thành %20
-        `/tim-kiem?keyword=${props.keyword.trim().replaceAll(" ", "%20")}&limit=10`
+        `/tim-kiem?keyword=${props.keyword
+          .trim()
+          .replaceAll(" ", "%20")}&limit=10`
       );
       if (moviesData && moviesData.length != 0) {
         setMovieSearchList(moviesData);
@@ -59,10 +61,10 @@ const MovieSearchList: React.FC<MovieSearchListProps> = (props) => {
           {movieSearchList.map((movie) => (
             <li key={movie._id} className="block w-full">
               <Link to={movie.slug}>
-                <div className="flex flex-row items-center hover:bg-gray-700">
-                  <div className="py-1 pl-5 pr-3">
+                <div className="flex flex-row items-center  hover:bg-gray-700">
+                  <div className="basis-4 py-1 pl-5 pr-3 w-10  h-14">
                     <img
-                      className="object-cover w-10 rounded-sm shadow-md h-14"
+                      className="object-cover  rounded-sm shadow-md size-full"
                       src={movie.poster_url}
                       alt={movie.name}
                     />

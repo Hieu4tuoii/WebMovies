@@ -35,7 +35,21 @@ export const getNewMovies = async (endpoint: string): Promise<Movie[]> => {
     console.error("Failed tofetch movies", error);
     throw error;
   }
+  
+};   
+
+//lấy danh sách phim hot
+export const getHotMovies = async (endpoint: string): Promise<Movie[]> => {
+  try {
+    //vì ds phim nằm trong items nên phải get items về trước(items thuộc interface ApiRespone)
+    const response = await api.get<ItemsMovie>(endpoint);
+      const movies = response.data.items;
+      return movies;
+  } catch (error) {
+    console.error("Failed tofetch movies", error);
+    throw error;
+  }
+  
 };
 
-
-
+   

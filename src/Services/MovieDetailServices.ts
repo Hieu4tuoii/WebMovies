@@ -1,7 +1,6 @@
 import { MovieDetailApiRespone } from "../Types/ApiRespone";
 import { api } from "./customAxios";
 
-
 export interface MovieDetail {
   created: {
     time: string;
@@ -69,15 +68,16 @@ export interface ApiDetailResponse {
   episodes: Episode[];
 }
 
-
-export const getMovieDetail = async (slug: string): Promise<ApiDetailResponse> => {
-    try {
-      //vì ds phim nằm trong items nên phải get items về trước(items thuộc interface ApiRespone)
-      const response = await api.get<ApiDetailResponse>(`/phim/${slug}`);
-        const movies = response.data;
-        return movies;
-    } catch (error) {
-      console.error("Failed tofetch movies", error);
-      throw error;
-    }
-  };
+export const getMovieDetail = async (
+  slug: string
+): Promise<ApiDetailResponse> => {
+  try {
+    //vì ds phim nằm trong items nên phải get items về trước(items thuộc interface ApiRespone)
+    const response = await api.get<ApiDetailResponse>(`/phim/${slug}`);
+    const movies = response.data;
+    return movies;
+  } catch (error) {
+    console.error("Failed tofetch movies", error);
+    throw error;
+  }
+};
