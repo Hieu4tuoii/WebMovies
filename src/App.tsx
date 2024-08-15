@@ -8,9 +8,12 @@ import MovieGenrePage from "./Pages/MovieCategoryPage/MovieCategoryPage";
 import MovieDetailPage from "./Pages/MovieDetailPage/MovieDetailPage";
 import ScrollToTop from "./components/custom/ScrollToTop";
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
+    //su dung helmet để thay doi title cua trang
+    <HelmetProvider>
     <div className="relative text-white bg-black">
       <BrowserRouter>
         <Navbarr />
@@ -44,6 +47,7 @@ function App() {
         <Footer />
       </BrowserRouter>
     </div>
+    </HelmetProvider>
   );
 }
 

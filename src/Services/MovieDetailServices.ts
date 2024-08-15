@@ -81,3 +81,6 @@ export const getMovieDetail = async (
     throw error;
   }
 };
+
+
+  

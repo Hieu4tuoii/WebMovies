@@ -11,3 +11,4 @@ export const getCategoryList = async (endpoint: string): Promise<Category[]> => 
     throw error;
   }
 };
+
