@@ -23,6 +23,7 @@ module.exports = {
         'color-main-hover': "#f13b3b",
         'color-three': "#A1A1A1",
         'bg-section2': "#1F1F1F",
+        'bg-section3': "#202629",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
