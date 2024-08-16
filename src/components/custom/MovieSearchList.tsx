@@ -62,14 +62,14 @@ const MovieSearchList: React.FC<MovieSearchListProps> = (props) => {
             <li key={movie._id} className="block w-full">
               <Link to={movie.slug}>
                 <div className="flex flex-row items-center hover:bg-gray-700">
-                  <div className="w-10 py-1 pl-5 pr-3 basis-4 h-14">
+                  <div className="h-16 py-1 pl-5 pr-3 w-18">
                     <img
                       className="object-cover rounded-sm shadow-md size-full"
                       src={movie.poster_url}
                       alt={movie.name}
                     />
                   </div>
-                  <div className="text-left">
+                  <div className="w-[80%] text-left overflow-hidden">
                     <span className="block whitespace-nowrap text-ellipsis">
                       {movie.name}
                     </span>

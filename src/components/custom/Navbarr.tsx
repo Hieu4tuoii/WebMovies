@@ -7,11 +7,9 @@ import { getCategoryList } from "src/Services/CategoryService";
 const Navbarr: React.FC = () => {
   const [keyword, setKeyword] = useState<string>("");
   const [debouncedKeyword, setDebouncedKeyword] = useState<string>(keyword);
+  const [showNavMenu, setShowNavMenu] = useState<boolean>(false);
 
   const [isFocused, setIsFocused] = useState(false);
-
-  
-
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedKeyword(keyword);
@@ -62,9 +60,13 @@ const Navbarr: React.FC = () => {
     }, 200);
   };
 
+  const handleshowNavMenu = () => {
+    setShowNavMenu(!showNavMenu);
+  };
+
   return (
-    <div>
-      <header className="sticky top-0 z-40 w-full bg-black">
+    <div className="sticky top-0 z-50 w-full h-full">
+      <header className="sticky top-0 z-40 w-full bg-black ">
         <div className="flex flex-row items-center justify-between py-4 ml-5 lg:ml-16 sm:mx-8">
           <div className="sm:basis-1/5 basis-2/7">
             <Link to="">
@@ -76,13 +78,11 @@ const Navbarr: React.FC = () => {
           <nav className="hidden lg:block basis-3/5">
             <ul className="flex justify-center text-xl font-semibold text-white gap-14">
               <li className="transition-all hover:text-red-600 ">
-                <a href="">Trang chủ</a>
+                <Link to={""}>Trang chủ</Link>
               </li>
-              <li className="relative transition-all hover:text-red-600 group">
-                <a href="#">
-                  Thể loại <i className="fa-solid fa-chevron-down"></i>{" "}
-                </a>
-                <ul className="-right-[200%] w-[500%] text-white absolute hidden pt-1  group-hover:grid  grid-cols-4">
+              <li className="relative transition-all hover:text-red-600 group hover:cursor-pointer">
+                Thể loại <i className="fa-solid fa-chevron-down"></i>{" "}
+                <ul className="absolute -right-[200%] w-[500%] text-white hidden pt-1   transition-all  group-hover:grid  grid-cols-4">
                   {category.map((item, index) => (
                     <li
                       className={index < 16 ? "block" : "hidden"}
@@ -97,10 +97,8 @@ const Navbarr: React.FC = () => {
                   ))}
                 </ul>
               </li>
-              <li className="relative transition-all hover:text-red-600 group">
-                <a href="#">
-                  Quốc gia <i className="fa-solid fa-chevron-down"></i>{" "}
-                </a>
+              <li className="relative transition-all hover:text-red-600 group hover:cursor-pointer">
+                Quốc gia <i className="fa-solid fa-chevron-down"></i>{" "}
                 <ul className="-right-[200%] w-[500%] text-white absolute hidden pt-1  group-hover:grid  grid-cols-4">
                   {country.map((item, index) => (
                     <li
@@ -146,61 +144,45 @@ const Navbarr: React.FC = () => {
               ""
             )}
           </div>
-          <div className="flex justify-end mr-5 lg:hidden basis-1/7 ">
-            <input
-              type="checkbox"
-              id="check-show-menu-bar"
-              className="peer/check-show-menu-bar"
-            />
-            <label htmlFor="check-show-menu-bar">
+          <div className="flex justify-end mr-5 lg:hidden basis-1/7">
+            <button onClick={handleshowNavMenu}>
               <i className="text-white fa-solid fa-bars"></i>
-            </label>
-
-            <nav className="absolute top-0 z-50 h-screen transition-all duration-1000 ease-in-out bg-bg-section3 -right-96 peer-checked/check-show-menu-bar:right-0 w-96">
-              <label htmlFor="check-show-menu-bar" className="absolute text-xl top-3 left-3">
-                <i className="text-white fa-solid fa-xmark"></i>
-              </label>
-              <ul className="text-lg text-end">
-                <li className="p-3">Trang chủ</li>
-                <li className="relative p-3 transition-all hover:text-red-600 group">
-                <i className="rotate-90 fa-solid fa-chevron-down"></i>{" "} Quốc gia
-                <ul className="-right-[200%] w-[500%] text-white absolute hidden pt-1  group-hover:grid  grid-cols-4">
-                  {country.map((item, index) => (
-                    <li
-                      className={index < 16 ? "block" : "hidden"}
-                      key={item.id}
-                    >
-                      <Link to={`/quoc-gia/${item.slug}`}>
-                        <span className="block w-40 px-2 py-6  bg-[#141111]  hover:text-color-main-hover transition-all text-nowrap">
-                          {item.name}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-              <li className="relative p-3 transition-all hover:text-red-600 group">
-                <i className="rotate-90 fa-solid fa-chevron-down"></i>{" "} Thể loại
-                <ul className="-right-[200%] w-[500%] text-white absolute hidden pt-1  group-hover:grid  grid-cols-4">
-                  {category.map((item, index) => (
-                    <li
-                      className={index < 16 ? "block" : "hidden"}
-                      key={item.id}
-                    >
-                      <Link to={`/the-loai/${item.slug}`}>
-                        <span className="block w-40 px-2 py-6  bg-[#141111]  hover:text-color-main-hover transition-all text-nowrap">
-                          {item.name}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-              </ul>
-            </nav>
+            </button>
           </div>
         </div>
       </header>
+      {/* navmenu */}
+      {/* dùng pointer-events-none để vô hiệu hóa navmenu và cho phép click xuyên qua nó */}
+      <div
+        className={`absolute text-xl top-0 z-50 w-full overflow-hidden h-screen ${showNavMenu ? "" : "pointer-events-none"}`}
+      >
+        <div
+        onClick={handleshowNavMenu}
+          className={`fixed duration-500  bg-black w-full h-full ${showNavMenu ? "opacity-60" : "opacity-0"}`}
+        ></div>
+        <nav
+          className={`absolute z-10 ${showNavMenu ? "right-0" : "-right-[80%]"} h-full duration-500 bg-bg-section3 w-80 max-w-[80%]`}
+        >
+          <button onClick={handleshowNavMenu}>
+            <i className="absolute text-xl text-white top-6 right-5 fa-solid fa-bars"></i>
+          </button>
+          <ul onClick={handleshowNavMenu} className="absolute space-y-4 font-semibold transition-all left-6 top-14 ">
+            <li className="hover:text-color-main-hover">
+              <Link to={"/danh-sach/phim-bo"}>Phim bộ</Link>
+            </li >
+            <li className="hover:text-color-main-hover">
+              <Link to={"/danh-sach/phim-le"}>Phim lẻ</Link>
+            </li>
+            <li className="hover:text-color-main-hover">
+              <Link to={"danh-sach/hoat-hinh"}>Hoạt hình</Link>
+            </li>
+            <li className="hover:text-color-main-hover">
+              <Link to={"danh-sach/tv-shows"}>TV Show</Link>
+            </li>
+            <li></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };
