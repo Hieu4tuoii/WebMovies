@@ -13,41 +13,43 @@ import { HelmetProvider } from "react-helmet-async";
 function App() {
   return (
     //su dung helmet để thay doi title cua trang
-    <HelmetProvider>
-    <div className="relative text-white bg-black">
-      <BrowserRouter>
-        <Navbarr />
-        {/* tu dong cuon len dau trang moi khi chuyen trang */}
-        <ScrollToTop/>
-        <SpeedInsights/>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage/>
-            }
-          />
-          {/* chi tiet phim va ds tap phim */}
-           <Route
-            path=":slug"
-            element={
-              <MovieDetailPage/>
-            }
-          />
+    // <HelmetProvider>
+    // <div className="relative text-white bg-black">
+    //   <BrowserRouter>
+    //     <Navbarr />
+    //     {/* tu dong cuon len dau trang moi khi chuyen trang */}
+    //     <ScrollToTop/>
+    //     <SpeedInsights/>
+    //     <Routes>
+    //       <Route
+    //         path="/"
+    //         element={
+    //           <HomePage/>
+    //         }
+    //       />
+    //       {/* chi tiet phim va ds tap phim */}
+    //        <Route
+    //         path=":slug"
+    //         element={
+    //           <MovieDetailPage/>
+    //         }
+    //       />
 
-          {/* ds phim theo the loai, theo loai phim hoac theo quoc gia */}
-          <Route
-            path="/:categoryOrCountry/:slug"
-            element={
-             <MovieGenrePage />
-            }
-          />
+    //       {/* ds phim theo the loai, theo loai phim hoac theo quoc gia */}
+    //       <Route
+    //         path="/:categoryOrCountry/:slug"
+    //         element={
+    //          <MovieGenrePage />
+    //         }
+    //       />
           
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </div>
-    </HelmetProvider>
+    //     </Routes>
+    //     <Footer />
+    //   </BrowserRouter>
+    // </div>
+    // </HelmetProvider>
+    <div><h1 className="text-[100px]">ĐI NGỦ ĐI
+      </h1></div>
   );
 }
 

@@ -157,7 +157,7 @@ const Navbarr: React.FC = () => {
         className={`absolute text-xl top-0 z-50 w-full overflow-hidden h-screen ${showNavMenu ? "" : "pointer-events-none"}`}
       >
         <div
-        onClick={handleshowNavMenu}
+          onClick={handleshowNavMenu}
           className={`fixed duration-500  bg-black w-full h-full ${showNavMenu ? "opacity-60" : "opacity-0"}`}
         ></div>
         <nav
@@ -166,18 +166,21 @@ const Navbarr: React.FC = () => {
           <button onClick={handleshowNavMenu}>
             <i className="absolute text-xl text-white top-6 right-5 fa-solid fa-bars"></i>
           </button>
-          <ul onClick={handleshowNavMenu} className="absolute space-y-4 font-semibold transition-all left-6 top-14 ">
+          <ul
+            onClick={handleshowNavMenu}
+            className="absolute space-y-4 font-semibold transition-all left-6 top-14 "
+          >
             <li className="hover:text-color-main-hover">
               <Link to={"/danh-sach/phim-bo"}>Phim bộ</Link>
-            </li >
+            </li>
             <li className="hover:text-color-main-hover">
               <Link to={"/danh-sach/phim-le"}>Phim lẻ</Link>
             </li>
             <li className="hover:text-color-main-hover">
-              <Link to={"danh-sach/hoat-hinh"}>Hoạt hình</Link>
+              <Link to={"/danh-sach/hoat-hinh"}>Hoạt hình</Link>
             </li>
             <li className="hover:text-color-main-hover">
-              <Link to={"danh-sach/tv-shows"}>TV Show</Link>
+              <Link to={"/danh-sach/tv-shows"}>TV Show</Link>
             </li>
             <li></li>
           </ul>
