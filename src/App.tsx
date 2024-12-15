@@ -48,8 +48,8 @@ function App() {
     //   </BrowserRouter>
     // </div>
     // </HelmetProvider>
-    <div><h1 className="text-[100px]">ĐI NGỦ ĐI
-      </h1></div>
+    <div><h1 className="text-[100px]">ĐI NGỦ ĐI TRẦN MAI TRANG
+      </h1></div> 
   );
 }
 
