@@ -12,7 +12,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
-    su dung helmet để thay doi title cua trang
+    //su dung helmet để thay doi title cua trang
     <HelmetProvider>
     <div className="relative text-white bg-black">
       <BrowserRouter>
