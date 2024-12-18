@@ -57,7 +57,7 @@ const Navbarr: React.FC = () => {
     setTimeout(() => {
       setIsFocused(false);
       setKeyword(""); // Reset keyword
-    }, 200);
+    }, 350);
   };
 
   const handleshowNavMenu = () => {
